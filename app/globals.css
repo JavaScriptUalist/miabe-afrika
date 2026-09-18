@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Miabe Afrika trade palette */
+  --color-atlantic: var(--atlantic);
+  --color-atlantic-foreground: var(--atlantic-foreground);
+  --color-paper: var(--paper);
+  --color-bone: var(--bone);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-laterite: var(--laterite);
+  --color-mangrove: var(--mangrove);
+  --color-harbor: var(--harbor);
+  --color-ink: var(--ink);
+
+  --font-sans: var(--font-syne);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: calc(var(--radius) - 1px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  color-scheme: light;
+
+  --atlantic: #0e2438;
+  --atlantic-foreground: #eef2f6;
+  --paper: #f6f1e8;
+  --bone: #efe8dc;
+  --gold: #c4a35a;
+  --gold-foreground: #161410;
+  --laterite: #9c3b2a;
+  --mangrove: #1e4d3a;
+  --harbor: #2f6f8f;
+  --ink: #161410;
+
+  --background: #f6f1e8;
+  --foreground: #161410;
+  --card: #fcfaf4;
+  --card-foreground: #161410;
+  --popover: #fcfaf4;
+  --popover-foreground: #161410;
+  --primary: #c4a35a;
+  --primary-foreground: #161410;
+  --secondary: #efe8dc;
+  --secondary-foreground: #161410;
+  --muted: #ece4d6;
+  --muted-foreground: #6b6455;
+  --accent: #efe8dc;
+  --accent-foreground: #161410;
+  --destructive: #9c3b2a;
+  --destructive-foreground: #f6f1e8;
+  --border: #ddd3c0;
+  --input: #ddd3c0;
+  --ring: #c4a35a;
+
+  --radius: 0.375rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'ss01';
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--gold-foreground);
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-feature-settings: 'tnum' 1;
+    letter-spacing: -0.01em;
+  }
+  /* thin gold structural rule */
+  .rule-gold {
+    border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-family: var(--font-mono);
+  }
+  /* status left rail on rows */
+  .rail {
+    box-shadow: inset 3px 0 0 0 var(--rail-color, transparent);
+  }
+  .input {
+    width: 100%;
+    border-radius: 0.25rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    outline: none;
+  }
+  .input:focus {
+    border-color: var(--gold);
+  }
+}
+
+/* thin scrollbars for dense trade-desk feel */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
